@@ -1,6 +1,8 @@
 # Feito pelos alunos:
-# Beatriz Vitória e Victor Pereira
-# DESENVOLVIMENTO DE SISTEMAS - 2º Modulo
+
+ Beatriz Vitória e Victor Pereira
+
+ DESENVOLVIMENTO DE SISTEMAS - 2º Modulo
 
 # Agência Bancária em JavaScript
 
