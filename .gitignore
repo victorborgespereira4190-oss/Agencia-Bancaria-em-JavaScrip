@@ -1,0 +1,6 @@
+# Arquivos locais e temporários
+.DS_Store
+Thumbs.db
+.vscode/
+node_modules/
+*.log
