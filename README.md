@@ -1,10 +1,10 @@
-# Feito pelos alunos:
+## Feito pelos alunos:
 
  Beatriz Vitória e Victor Pereira
 
  DESENVOLVIMENTO DE SISTEMAS - 2º Modulo
 
-# Agência Bancária em JavaScript
+## Agência Bancária em JavaScript
 
 Projeto de agência bancária escolar desenvolvido com HTML, CSS e JavaScript.
 
