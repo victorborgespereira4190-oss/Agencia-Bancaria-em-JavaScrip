@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banco Escolar Digital</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Cabeçalho -->
+<header class="topo">
+<div>
+<h1>Banco Escolar Digital</h1>
+<p class="subtitulo">Programação Web 2 — Prova Prática</p>
+</div>
+<div id="dataHora"></div>
+</header>
+
+<!-- Menu de navegação -->
+<nav class="menu">
+<button type="button" data-tela="tela-cadastro">Cadastrar Conta</button>
+<button type="button" data-tela="tela-movimentacoes">Movimentações</button>
+<button type="button" data-tela="tela-contas">Listar Contas</button>
+<button type="button" data-tela="tela-transferencia">Transferência</button>
+<button type="button" data-tela="tela-sobre">Sobre o exercício</button>
+</nav>
+
+<div class="conteudo">
+<div class="container-principal">
+
+<!-- Tela: Menu inicial -->
+<section id="tela-menu" class="tela">
+<h2>Bem-vindo à agência</h2>
+<p class="descricao">Escolha uma das opções abaixo para começar.</p>
+<div class="cards-menu">
+<button type="button" class="card-menu" data-tela="tela-cadastro">
+<span class="icone">+</span>
+<h3>Cadastrar Conta</h3>
+<p>Abra uma conta comum ou especial para um novo titular.</p>
+</button>
+<button type="button" class="card-menu" data-tela="tela-movimentacoes">
+<span class="icone">⇄</span>
+<h3>Movimentações</h3>
+<p>Realize depósitos e saques e acompanhe o saldo.</p>
+</button>
+<button type="button" class="card-menu" data-tela="tela-transferencia">
+<span class="icone">⇄</span>
+<h3>Transferência</h3>
+<p>Transfira valores entre contas cadastradas.</p>
+</button>
+<button type="button" class="card-menu" data-tela="tela-contas">
+<span class="icone">☰</span>
+<h3>Listar Contas</h3>
+<p>Veja todas as contas cadastradas e seus totais.</p>
+</button>
+<button type="button" class="card-menu" data-tela="tela-sobre">
+<span class="icone">?</span>
+<h3>Sobre o exercício</h3>
+<p>Objetivo da prova e regras de negócio do sistema.</p>
+</button>
+</div>
+</section>
+
+<!-- Tela: Cadastro de conta -->
+<section id="tela-cadastro" class="tela oculta oculto">
+<h2>Cadastrar conta</h2>
+<p class="descricao">O saldo inicial é sempre R$ 0,00. Contas especiais recebem um limite de crédito.</p>
+<form id="form-cadastro">
+<div>
+<label for="nome">Nome do titular</label>
+<input id="nome" type="text" required>
+</div>
+<div>
+<label for="cpf">CPF (opcional)</label>
+<input id="cpf" type="text">
+</div>
+<div>
+<label for="numeroConta">Número da conta</label>
+<input id="numeroConta" type="text" placeholder="Deixe vazio para gerar automaticamente">
+</div>
+<div>
+<label for="tipoConta">Tipo de conta</label>
+<select id="tipoConta">
+<option value="comum">Comum</option>
+<option value="especial">Especial</option>
+</select>
+</div>
+<div id="campo-limite" class="oculto">
+<label for="limite">Limite da conta especial (R$)</label>
+<input id="limite" type="number" step="0.01" min="0" placeholder="0,00">
+</div>
+<button type="submit">Cadastrar conta</button>
+</form>
+<div id="msg-cadastro" class="mensagem"></div>
+</section>
+
+<!-- Tela: Movimentações -->
+<section id="tela-movimentacoes" class="tela oculta oculto">
+<h2>Movimentações</h2>
+<p class="descricao">Selecione uma conta para consultar o saldo e registrar depósitos e saques.</p>
+<div>
+<label for="selectConta">Conta</label>
+<select id="selectConta"></select>
+</div>
+<div class="painel-saldo">
+<div>
+<span class="rotulo">Saldo atual</span>
+<span class="valor" id="saldoAtual"></span>
+</div>
+<div>
+<span class="rotulo">Limite disponível</span>
+<span class="valor" id="limiteDisponivel"></span>
+</div>
+<div>
+<span class="rotulo">Total disponível</span>
+<span class="valor" id="totalDisponivel"></span>
+</div>
+</div>
+<form id="form-deposito" novalidate>
+<div>
+<label for="valorDeposito">Valor do depósito (R$)</label>
+<input id="valorDeposito" type="number" step="0.01" min="0" placeholder="0,00">
+</div>
+<button type="submit" class="botao-atm">Depositar</button>
+</form>
+<form id="form-saque" novalidate>
+<div>
+<label for="valorSaque">Valor do saque (R$)</label>
+<input id="valorSaque" type="number" step="0.01" min="0" placeholder="0,00">
+</div>
+<button type="submit" class="botao-atm">Sacar</button>
+</form>
+<div id="msg-movimentacao" class="mensagem"></div>
+<h3>Histórico da conta</h3>
+<div id="historico" class="historico"></div>
+</section>
+
+<!-- Tela: Transferência -->
+<section id="tela-transferencia" class="tela oculta oculto">
+<h2>Transferência</h2>
+<p class="descricao">Selecione as contas de origem e destino e informe o valor.</p>
+<form id="form-transferencia" novalidate>
+<div><label for="selectOrigem">Conta de origem</label><select id="selectOrigem"></select></div>
+<div><label for="selectDestino">Conta de destino</label><select id="selectDestino"></select></div>
+<div><label for="valorTransferencia">Valor da transferência (R$)</label><input id="valorTransferencia" type="number" step="0.01" min="0" placeholder="0,00"></div>
+<button type="submit" class="botao-atm">Transferir</button>
+</form>
+<div id="msg-transferencia" class="mensagem"></div>
+</section>
+<!-- Tela: Listagem de contas -->
+<section id="tela-contas" class="tela oculta oculto">
+<h2>Contas cadastradas</h2>
+<p class="descricao">Visão geral de saldos, limites e total disponível.</p>
+<div class="tabela-wrapper">
+<table>
+<thead>
+<tr>
+<th>Titular</th>
+<th>Conta</th>
+<th>Tipo</th>
+<th>Saldo</th>
+<th>Limite</th>
+<th>Total disponível</th>
+<th>Ação</th>
+</tr>
+</thead>
+<tbody id="corpoTabela"></tbody>
+</table>
+</div>
+</section>
+
+<!-- Tela: Sobre o exercício -->
+<section id="tela-sobre" class="tela oculta oculto">
+<h2>Sobre o exercício</h2>
+<p class="descricao">Objetivo da prova e regras de negócio do sistema.</p>
+<p>O sistema simula uma agência bancária. O aluno deve implementar as funções de depósito, saque e transferência, respeitando as regras de negócio listadas abaixo.</p>
+<ul>
+<li>Toda conta nasce com saldo R$ 0,00.</li>
+<li>Existem contas Comum e Especial.</li>
+<li>A conta especial tem limite de crédito informado no cadastro.</li>
+<li>Total disponível = saldo + limite (para conta comum, total disponível = saldo).</li>
+<li>Depósito soma ao saldo.</li>
+<li>Saque subtrai do saldo e pode usar o limite, deixando o saldo negativo.</li>
+<li>O saque nunca pode ultrapassar o total disponível.</li>
+<li>Toda movimentação é registrada no histórico com tipo, valor e data/hora.</li>
+</ul>
+</section>
+
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

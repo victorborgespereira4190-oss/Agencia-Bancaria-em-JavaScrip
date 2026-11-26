@@ -1,0 +1,542 @@
+/* ==========================================================
+   RESET
+   ========================================================== */
+   *,
+   *::before,
+   *::after {
+     box-sizing: border-box;
+   }
+   
+   * {
+     margin: 0;
+     padding: 0;
+   }
+   
+   body {
+     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+     background: linear-gradient(160deg, #0b1120 0%, #111c33 50%, #0a1426 100%);
+     color: #e2e8f0;
+     min-height: 100vh;
+     line-height: 1.5;
+   }
+   
+   /* ==========================================================
+      LAYOUT GERAL
+      ========================================================== */
+   .oculto {
+     display: none !important;
+   }
+   
+   body > header.topo,
+   body > .conteudo {
+     width: 100%;
+   }
+   
+   .container-principal {
+     width: 100%;
+     max-width: 1100px;
+     margin: 0 auto;
+     padding: 24px 16px 48px;
+   }
+   
+   /* ==========================================================
+      TOPO
+      ========================================================== */
+   .topo {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     flex-wrap: wrap;
+     gap: 12px;
+     padding: 18px 28px;
+     background: rgba(8, 14, 28, 0.85);
+     border-bottom: 1px solid #1e3a5f;
+     backdrop-filter: blur(6px);
+   }
+   
+   .topo h1 {
+     font-size: 1.6rem;
+     font-weight: 700;
+     color: #3b82f6;
+     letter-spacing: 0.02em;
+   }
+   
+   .topo .subtitulo {
+     font-size: 0.9rem;
+     color: #94a3b8;
+     margin-top: 2px;
+   }
+   
+   #dataHora {
+     margin-left: auto;
+     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+     font-size: 0.95rem;
+     color: #cbd5e1;
+     background: rgba(30, 58, 95, 0.4);
+     padding: 6px 12px;
+     border-radius: 8px;
+     border: 1px solid #1e3a5f;
+     text-align: right;
+   }
+   
+   /* ==========================================================
+      MENU
+      ========================================================== */
+   .menu {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 8px;
+     justify-content: center;
+     padding: 14px 20px;
+     background: #0f1a2e;
+     border-bottom: 1px solid #1e293b;
+   }
+   
+   .menu button[data-tela] {
+     flex: 1 1 140px;
+     max-width: 200px;
+     padding: 10px 16px;
+     background: transparent;
+     color: #cbd5e1;
+     border: 1px solid #334155;
+     border-radius: 8px;
+     font-size: 0.95rem;
+     font-weight: 500;
+     cursor: pointer;
+     transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+   }
+   
+   .menu button[data-tela]:hover {
+     background: rgba(59, 130, 246, 0.12);
+     border-color: #3b82f6;
+     color: #ffffff;
+   }
+   
+   .menu button[data-tela].ativo,
+   .menu button[data-tela][aria-current="page"] {
+     background: #1d4ed8;
+     border-color: #3b82f6;
+     color: #ffffff;
+     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.35);
+   }
+   
+   .menu button[data-tela]:focus-visible {
+     outline: 2px solid #60a5fa;
+     outline-offset: 2px;
+   }
+   
+   /* ==========================================================
+      TELAS
+      ========================================================== */
+   .tela {
+     width: 100%;
+     max-width: 900px;
+     margin: 28px auto;
+     padding: 32px 28px;
+     background: #111b2e;
+     border: 1px solid #1e293b;
+     border-radius: 16px;
+     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+   }
+   
+   .tela h2 {
+     font-size: 1.35rem;
+     color: #f1f5f9;
+     margin-bottom: 6px;
+   }
+   
+   .tela > p.descricao {
+     color: #94a3b8;
+     font-size: 0.92rem;
+     margin-bottom: 22px;
+   }
+   
+   /* ==========================================================
+      CARDS DO MENU
+      ========================================================== */
+   .cards-menu,
+   .card-menu-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+     gap: 18px;
+     margin-top: 16px;
+   }
+   
+   .card-menu {
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     padding: 26px 22px;
+     background: linear-gradient(160deg, #15243f 0%, #0f1a2e 100%);
+     border: 1px solid #1e3a5f;
+     border-radius: 14px;
+     cursor: pointer;
+     transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+     text-align: left;
+     color: inherit;
+   }
+   
+   .card-menu:hover {
+     transform: translateY(-6px);
+     border-color: #3b82f6;
+     box-shadow: 0 14px 30px rgba(59, 130, 246, 0.25);
+   }
+   
+   .card-menu:focus-visible {
+     outline: 2px solid #60a5fa;
+     outline-offset: 3px;
+   }
+   
+   .card-menu .icone {
+     font-size: 1.8rem;
+   }
+   
+   .card-menu h3 {
+     font-size: 1.1rem;
+     color: #f1f5f9;
+   }
+   
+   .card-menu p {
+     font-size: 0.88rem;
+     color: #94a3b8;
+   }
+   
+   /* ==========================================================
+      FORMULÁRIOS
+      ========================================================== */
+   form {
+     display: flex;
+     flex-direction: column;
+     gap: 16px;
+   }
+   
+   label {
+     display: block;
+     font-size: 0.85rem;
+     font-weight: 600;
+     color: #cbd5e1;
+     margin-bottom: 6px;
+     letter-spacing: 0.02em;
+   }
+   
+   input,
+   select,
+   textarea {
+     width: 100%;
+     padding: 12px 14px;
+     background: #0a1426;
+     color: #f1f5f9;
+     border: 1px solid #334155;
+     border-radius: 8px;
+     font-size: 1rem;
+     font-family: inherit;
+     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+   }
+   
+   input::placeholder {
+     color: #64748b;
+   }
+   
+   input:focus,
+   select:focus,
+   textarea:focus {
+     outline: none;
+     border-color: #3b82f6;
+     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.35), 0 0 12px rgba(59, 130, 246, 0.25);
+   }
+   
+   #campo-limite.oculto {
+     display: none !important;
+   }
+   
+   form button[type="submit"],
+   .botao-atm {
+     width: 100%;
+     padding: 16px 20px;
+     font-size: 1.05rem;
+     font-weight: 700;
+     letter-spacing: 0.06em;
+     text-transform: uppercase;
+     color: #ffffff;
+     background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+     border: 1px solid #1e40af;
+     border-radius: 10px;
+     cursor: pointer;
+     box-shadow: 0 6px 16px rgba(29, 78, 216, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+     transition: transform 0.12s ease, box-shadow 0.2s ease, filter 0.2s ease;
+   }
+   
+   form button[type="submit"]:hover,
+   .botao-atm:hover {
+     filter: brightness(1.1);
+     box-shadow: 0 10px 22px rgba(59, 130, 246, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+   }
+   
+   form button[type="submit"]:active,
+   .botao-atm:active {
+     transform: scale(0.98) translateY(1px);
+     box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.35);
+   }
+   
+   form button[type="submit"]:focus-visible,
+   .botao-atm:focus-visible {
+     outline: 2px solid #93c5fd;
+     outline-offset: 3px;
+   }
+   
+   /* ==========================================================
+      PAINEL DE SALDO
+      ========================================================== */
+   #selectConta {
+     margin-bottom: 18px;
+   }
+   
+   .painel-saldo {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 14px;
+     margin: 18px 0 26px;
+   }
+   
+   .painel-saldo > div {
+     padding: 18px;
+     background: #0a1426;
+     border: 1px solid #1e3a5f;
+     border-radius: 12px;
+     text-align: center;
+   }
+   
+   .painel-saldo .rotulo {
+     display: block;
+     font-size: 0.72rem;
+     letter-spacing: 0.12em;
+     text-transform: uppercase;
+     color: #94a3b8;
+     margin-bottom: 8px;
+   }
+   
+   .painel-saldo .valor {
+     display: block;
+     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+     font-size: 1.5rem;
+     font-weight: 700;
+     color: #e2e8f0;
+   }
+   
+   #saldoAtual {
+     color: #4ade80;
+   }
+   
+   #saldoAtual.saldo-negativo {
+     color: #f87171;
+   }
+   
+   /* ==========================================================
+      HISTÓRICO
+      ========================================================== */
+   .historico {
+     margin-top: 14px;
+     border: 1px solid #1e293b;
+     border-radius: 10px;
+     background: #0a1426;
+     max-height: 320px;
+     overflow-y: auto;
+   }
+   
+   .historico .item {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     gap: 12px;
+     padding: 12px 16px;
+     border-bottom: 1px solid #1e293b;
+     font-size: 0.92rem;
+   }
+   
+   .historico .item:last-child {
+     border-bottom: none;
+   }
+   
+   .historico .data {
+     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+     font-size: 0.8rem;
+     color: #64748b;
+   }
+   
+   .historico .valor-mov {
+     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+     font-weight: 700;
+   }
+   
+   .mov-deposito {
+     color: #4ade80;
+   }
+   
+   .mov-saque {
+     color: #f87171;
+   }
+   
+   .vazio {
+     padding: 22px;
+     text-align: center;
+     font-style: italic;
+     color: #94a3b8;
+   }
+   
+   /* ==========================================================
+      MENSAGENS
+      ========================================================== */
+   .mensagem {
+     margin-top: 14px;
+     padding: 12px 16px;
+     border-radius: 8px;
+     border: 1px solid #334155;
+     background: rgba(51, 65, 85, 0.3);
+     color: #e2e8f0;
+     font-size: 0.92rem;
+   }
+   
+   .mensagem.sucesso {
+     background: rgba(34, 197, 94, 0.15);
+     border-color: #22c55e;
+     color: #bbf7d0;
+   }
+   
+   .mensagem.erro {
+     background: rgba(239, 68, 68, 0.15);
+     border-color: #ef4444;
+     color: #fecaca;
+   }
+   
+   .aviso-arquivos {
+     margin: 12px auto 0;
+     max-width: 1100px;
+     padding: 8px 14px;
+     font-size: 0.8rem;
+     color: #fde68a;
+     background: rgba(234, 179, 8, 0.12);
+     border: 1px dashed #ca8a04;
+     border-radius: 8px;
+     text-align: center;
+   }
+   
+   /* ==========================================================
+      TABELA
+      ========================================================== */
+   table {
+     width: 100%;
+     border-collapse: collapse;
+     font-size: 0.95rem;
+     background: #0a1426;
+     border-radius: 10px;
+     overflow: hidden;
+   }
+   
+   thead {
+     background: #060c18;
+   }
+   
+   th {
+     text-align: left;
+     padding: 12px 14px;
+     font-size: 0.78rem;
+     letter-spacing: 0.08em;
+     text-transform: uppercase;
+     color: #94a3b8;
+     border-bottom: 1px solid #1e3a5f;
+   }
+   
+   td {
+     padding: 12px 14px;
+     border-bottom: 1px solid #1e293b;
+     color: #e2e8f0;
+   }
+   
+   tbody tr:nth-child(even) {
+     background: rgba(30, 41, 59, 0.35);
+   }
+   
+   tbody tr:hover {
+     background: rgba(59, 130, 246, 0.1);
+   }
+   
+   table button {
+     padding: 6px 12px;
+     font-size: 0.8rem;
+     color: #ffffff;
+     background: #1d4ed8;
+     border: 1px solid #3b82f6;
+     border-radius: 6px;
+     cursor: pointer;
+     transition: background 0.2s ease;
+   }
+   
+   table button:hover {
+     background: #2563eb;
+   }
+   
+   /* ==========================================================
+      RESPONSIVO
+      ========================================================== */
+   @media (max-width: 700px) {
+     .topo {
+       padding: 14px 16px;
+     }
+   
+     .topo h1 {
+       font-size: 1.3rem;
+     }
+   
+     #dataHora {
+       margin-left: 0;
+       width: 100%;
+       text-align: left;
+     }
+   
+     .menu {
+       flex-direction: column;
+       align-items: stretch;
+       padding: 12px;
+     }
+   
+     .menu button[data-tela] {
+       max-width: none;
+       flex: none;
+       width: 100%;
+     }
+   
+     .tela {
+       padding: 22px 16px;
+       margin: 18px auto;
+     }
+   
+     .painel-saldo {
+       grid-template-columns: 1fr;
+     }
+   
+     .painel-saldo .valor {
+       font-size: 1.25rem;
+     }
+   
+     .card-menu-grid,
+     .cards-menu {
+       grid-template-columns: 1fr;
+     }
+   
+     .tabela-wrapper,
+     .tela table {
+       display: block;
+       overflow-x: auto;
+       white-space: nowrap;
+     }
+   
+     table {
+       font-size: 0.8rem;
+     }
+   
+     th,
+     td {
+       padding: 8px 10px;
+     }
+   }
+   
